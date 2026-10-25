@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.ipynb_checkpoints/
+
+data/raw/*.csv
+data/processed/
+
+outputs/part2/
+outputs/part3/
+powerbi/
