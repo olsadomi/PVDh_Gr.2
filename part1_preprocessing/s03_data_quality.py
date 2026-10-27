@@ -63,3 +63,28 @@ def consistency(df):
     }, name="count")
     show(c)
     return c
+
+
+def timeliness(df):
+    print("Registrations in 2026 (to 05.10):", (df[C.YEAR] == 2026).sum(),
+          "| last month:", df.loc[df[C.YEAR] == 2026, "registration_month"].max())
+    print("Statuses:", df[C.STATUS].value_counts().to_dict())
+
+
+def assess_quality(df, standard_municipalities) -> pd.DataFrame:
+    step("3. DATA QUALITY")
+    c = completeness(df); show(c)
+    dup = uniqueness(df)
+    v = validity(df, standard_municipalities)
+    k = consistency(df)
+    timeliness(df)
+    report = pd.concat([
+        pd.DataFrame({"dimension": "Completeness", "check": c.index + " - missing", "count": c["missing"].values}),
+        pd.DataFrame({"dimension": "Uniqueness", "check": ["Repeated IDs (rows)"], "count": [len(dup)]}),
+        pd.DataFrame({"dimension": "Validity", "check": v.index, "count": v.values}),
+        pd.DataFrame({"dimension": "Consistency", "check": k.index, "count": k.values}),
+    ], ignore_index=True)
+    report["percent"] = (report["count"] / len(df) * 100).round(3)
+    report = report[report["count"] > 0]
+    save_csv(report, OUT_PART1 / "02_data_quality_report.csv")
+    return report
