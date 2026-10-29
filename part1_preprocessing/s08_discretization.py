@@ -8,9 +8,8 @@ domain intervals (business life cycle) are chosen. For employees, quantiles cann
 import numpy as np
 import pandas as pd
 
-from common.columns import C
 from common.utils import show, step
-from common.values import AGE_GROUPS, REGISTRATION_PERIODS
+from common.values import AGE_GROUPS
 
 
 def discretize(df):
@@ -22,13 +21,4 @@ def discretize(df):
     print("- Domain intervals (chosen):"); show(domain.value_counts(sort=False))
     df["age_group"] = domain
 
-    try:
-        pd.qcut(df[C.EMPLOYEES].astype(float), q=4)
-    except ValueError as e:
-        print("qcut on employees fails:", str(e).split(".")[0])
-    print("Employee quantiles:", df[C.EMPLOYEES].astype(float).quantile([.25, .5, .75, .9, .99]).to_dict())
-
-    df["registration_period"] = pd.cut(df[C.YEAR].astype(int), bins=[1999, 2007, 2019, 2021, 2026],
-                                       labels=REGISTRATION_PERIODS)
-    show(df["registration_period"].value_counts(sort=False))
     return df
