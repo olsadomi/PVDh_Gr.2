@@ -126,5 +126,9 @@ requirements.txt          Python dependencies
 
 Only Part I is currently implemented and documented in this repository. `outputs/part2/`, `outputs/part3/`, and `powerbi/` are reserved for later analysis and visualization work.
 
+## License
 
+The source code in this repository is released under the [MIT License](LICENSE).
+
+The ARBK business registry snapshot (`data/raw/`) and the municipal population estimates (`data/external/`) are third-party data. They are not covered by the MIT License and remain subject to the terms of their original publishers. Outputs derived from them are shared for educational purposes as part of the Data Preparation and Visualization course.
 
