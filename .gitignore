@@ -10,7 +10,7 @@ venv/
 
 data/raw/*.csv
 data/processed/
-
+outputs/part1/
 outputs/part2/
 outputs/part3/
 powerbi/
