@@ -1,0 +1,7 @@
+﻿column,missing,mechanism,strategy,rationale
+Emri tregtare,34.4%,Structural (optional field),Not imputed,Binary feature has_trade_name is created
+Aktiv. Nace2 - Përshkrimi / Sektori,3.6%,MAR (depends on year),'E panjohur' category in nace_code/section_* + flag,Mode imputation would distort the 2000s sector structure
+Nr. punëtorëve,0.6%,MCAR/MAR (few),Median by 'Lloji i biznesit' + flag,Highly skewed; mean (2.3) is biased; group median keeps sole proprietorship vs JSC differences
+Madhësia,0.7%,Derived,Recomputed from 'Nr. punëtorëve',"Deterministic function (EU: 0-9, 10-49, 50-249, 250+)"
+Qyteti,0.01%,MCAR (40 rows),'E panjohur' category,Kept for national totals
+Data Shuarjes,86.9%,Structural (active businesses have none),Not imputed,Used as censoring in survival analysis

@@ -1,0 +1,21 @@
+﻿dimension,check,count,percent
+Completeness,Data Shuarjes - missing,236375,86.913
+Completeness,Emri tregtare - missing,93659,34.438
+Completeness,Sektori - missing,9686,3.561
+Completeness,Aktiv. Nace2 - Përshkrimi - missing,9686,3.561
+Completeness,Madhësia - missing,1839,0.676
+Completeness,Nr. punëtorëve - missing,1554,0.571
+Completeness,Qyteti - missing,40,0.015
+Completeness,Nr. i biznesit - missing,1,0.0
+Uniqueness,Repeated IDs (rows),36,0.013
+Validity,Nr. i biznesit missing,1,0.0
+Validity,Nr. i biznesit with 8 digits (legacy format),25873,9.513
+Validity,Nr. punëtorëve < 0,20,0.007
+Validity,Nr. punëtorëve == 0,265,0.097
+Validity,Qyteti non-standard,1,0.0
+Consistency,"""Shuar"" without a closure date",2562,0.942
+Consistency,"""Regjistruar"" with a closure date",14,0.005
+Consistency,"""Pasiv"" with a closure date",60,0.022
+Consistency,Closure date before registration year,26,0.01
+Consistency,Size class != employee class,4,0.001
+Consistency,"Size class missing, employees present",285,0.105

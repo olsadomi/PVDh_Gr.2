@@ -1,0 +1,16 @@
+﻿column,conceptual_type,measurement_scale,pandas_type,note
+Nr. i biznesit,Identifier,Nominal (ID),string,Unique key; not a measurement
+Emri i biznesit,Text,Nominal (high cardinality),string,Legal name
+Emri tregtare,Text,Nominal (high cardinality),string,Trade name (optional)
+Lloji i biznesit,Categorical,Nominal,category,Legal form (11 values)
+Aktiv. Nace2 - Përshkrimi,Categorical (hierarchical),Nominal,category,NACE Rev.2 code + description
+Sektori,Categorical (hierarchical),Nominal,category,NACE section (A-U)
+Nr. punëtorëve,Numeric discrete,Ratio,Int64,Count; true zero
+Madhësia,Categorical,Ordinal,ordered category,0-9 < 10-49 < 50-249 < 250-
+Total M,Numeric discrete,Ratio,Int64,Number of male owners (interpretation)
+Total F,Numeric discrete,Ratio,Int64,Number of female owners (interpretation)
+Qyteti,Categorical / Geographic,Nominal,category,Municipality (38)
+Statusi i biznesit,Categorical,Nominal,category,Contains an embedded date (Pasiv-09/06/2022)
+Years,Temporal,Interval,Int64,Year of registration
+Months,Temporal,Ordinal (cyclical),string -> Int64,Month name; numeric copy in registration_month
+Data Shuarjes,Temporal,Interval,datetime64,Format dd/mm/yyyy

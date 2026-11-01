@@ -1,0 +1,9 @@
+﻿step,rows_affected,action
+4.1 Missing ID,1,Row removed
+4.2 Duplicated ID,18,"Kept most recent registration, flag re_registered=1"
+4.3 Municipality,1,'Zvecane' -> 'Zveçan'
+4.4 Status,93226,Embedded date split off into status + passivation_date
+4.5 Employees < 0,20,Negative value -> NaN
+4.6 Closure < registration,26,Date -> NaT + flag
+4.7 Status/date conflict,2661,Flag only; official status kept
+4.8 NACE,262263,Code and description split into new columns
