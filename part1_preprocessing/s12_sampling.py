@@ -1,8 +1,10 @@
 """Step 12 - Sampling.
 
 Some Part II methods (LOF, statistical tests) are slow or give "always significant" p-values with 272k rows.
-Two 10% samples are compared: simple random (SRS) and stratified (legal_form_group x status).
-The stratified sample preserves the proportions better (even for small strata) and is saved for Part II.
+Two 10% samples (~27k rows, enough for stable proportions and fast enough for LOF) are compared:
+simple random (SRS) and stratified (legal_form_group x status).
+The stratified sample preserves the proportions better and is saved for Part II.
+Strata with fewer than 10 rows (e.g. "Ne proces te likuidimit", 6 rows in total) get 0 rows at frac=0.10.
 """
 import pandas as pd
 
