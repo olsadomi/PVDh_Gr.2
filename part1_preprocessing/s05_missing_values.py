@@ -36,8 +36,8 @@ def analyse_mechanism(df):
 
     ct = pd.crosstab(df["nace_code"].isna(), df[C.YEAR] < 2008)
     chi2, p, _, _ = chi2_contingency(ct)
-    print(f"Chi-square: NACE missing vs (registered before 2008) -> chi2={chi2:,.0f}, p={p:.2e} => not MCAR (MAR on year)")
-
+    p_txt = "p < 1e-300" if p == 0 else f"p={p:.2e}"
+    print(f"Chi-square: NACE missing vs (registered before 2008) -> chi2={chi2:,.0f}, {p_txt} => not MCAR (MAR on year)")
 
 def handle(df):
     step("5. MISSING VALUES - MECHANISM AND STRATEGY")
