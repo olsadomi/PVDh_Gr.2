@@ -1,7 +1,8 @@
 """Step 13 - Dimensionality reduction and feature subset selection.
 
-13.1 Feature selection: (a) domain-based removal, (b) variance filter, (c) mutual information with `is_active`.
-     `age_years` is excluded from MI: for closed businesses it is measured up to closure -> information leakage.
+13.1 Feature selection: (a) domain-based removal, (b) variance filter, (c) mutual information with `is_active`
+     on the features kept by (b). `age_years` is excluded from MI: for closed businesses it is measured up to
+     closure -> information leakage.
 13.2 PCA on the municipality x section matrix (38 x 21, as shares within each municipality -> structure, not size).
 """
 import matplotlib.pyplot as plt
@@ -41,7 +42,8 @@ def select_features(df, strat):
     var = pd.DataFrame({"variance": cand.var().round(4), "kept (var > 0.01)": vt.get_support()})
     print("(b) Variance filter:"); show(var.sort_values("variance"))
 
-    X = cand.loc[strat.index].drop(columns=["age_years"])
+    kept = cand.columns[vt.get_support()]
+    X = cand.loc[strat.index, kept].drop(columns=["age_years"])
     y = df.loc[strat.index, "is_active"]
     mi = pd.Series(mutual_info_classif(X, y, discrete_features=[X[c].nunique() <= 13 for c in X.columns],
                                        random_state=RANDOM_STATE), index=X.columns, name="MI").sort_values(ascending=False)
