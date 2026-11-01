@@ -1,6 +1,12 @@
+"""Step 9 - Binarization.
+
+One-hot encoding of legal form group, status and region; the top k NACE sections (the rest -> "Other");
+plus the existing binary flags. The matrix is saved for Part II.
+"""
 import pandas as pd
 
-from common.utils import show, step
+from common.config import PROCESSED
+from common.utils import save_csv, show, step
 
 
 def binarize(df, k: int = 8) -> pd.DataFrame:
@@ -11,4 +17,5 @@ def binarize(df, k: int = 8) -> pd.DataFrame:
     matrix = pd.concat([onehot, sections, df[["has_female_owner", "has_trade_name", "re_registered"]]], axis=1)
     print(f"Binary matrix: {matrix.shape} | density (share of 1s): {matrix.values.mean():.3f}")
     show(matrix.head(3))
+    save_csv(matrix, PROCESSED / "arbk_binary_matrix.csv")
     return matrix
