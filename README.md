@@ -126,13 +126,5 @@ requirements.txt          Python dependencies
 
 Only Part I is currently implemented and documented in this repository. `outputs/part2/`, `outputs/part3/`, and `powerbi/` are reserved for later analysis and visualization work.
 
-## Limitations
-
-- Registry entries represent registered businesses, not necessarily currently operating establishments.
-- Status/date conflicts are flagged but the official status is not overwritten.
-- Employee imputation preserves legal-form differences but still introduces estimated values.
-- NACE missingness is not random across registration years, so historical sector comparisons require care.
-- Municipal population estimates—particularly in northern municipalities—may not be directly comparable.
-- The raw ARBK snapshot and population data remain subject to their publishers' terms and definitions.
 
 
